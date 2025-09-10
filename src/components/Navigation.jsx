@@ -191,8 +191,8 @@ function Navigation() {
                     title={item.description || item.name}
                     className={`nav-item-hover px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 transition-all duration-300 ${
                       isActive
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                        : 'text-gray-700 hover:bg-white/50 hover:shadow-md'
+                        ? 'nav-item-active'
+                        : 'nav-item-inactive'
                     }`}
                   >
                     <IconComponent className="w-4 h-4" />
@@ -206,7 +206,7 @@ function Navigation() {
           {/* Right Section - Mode Toggle, Notifications & Profile */}
           <div className="flex items-center space-x-2 sm:space-x-4">
             
-            {/* Mode Toggle Button - Circular Icon Only */}
+            {/* Mode Toggle Button - Universal colors across all devices */}
             <div className="flex items-center">
               <Button
                 variant="ghost"
@@ -214,8 +214,8 @@ function Navigation() {
                 onClick={handleModeToggle}
                 className={`rounded-full w-10 h-10 sm:w-12 sm:h-12 transition-all duration-500 transform hover:scale-110 !hover:bg-transparent cursor-pointer ${
                   isStudyMode 
-                    ? 'bg-blue-100 hover:!bg-blue-200 text-blue-600 shadow-blue-200/50' 
-                    : 'bg-purple-100 hover:!bg-purple-200 text-purple-600 shadow-purple-200/50'
+                    ? 'mode-toggle-study' 
+                    : 'mode-toggle-professional'
                 } shadow-lg hover:shadow-xl`}
                 title={isStudyMode ? "Switch to Professional Mode" : "Switch to Study Mode"}
               >
@@ -353,8 +353,8 @@ function Navigation() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
                         isActive
-                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                          : 'text-gray-700 hover:bg-blue-50/70 hover:text-blue-600'
+                          ? 'nav-item-active'
+                          : 'nav-item-inactive'
                       }`}
                     >
                       <IconComponent className="w-4 h-4 flex-shrink-0" />

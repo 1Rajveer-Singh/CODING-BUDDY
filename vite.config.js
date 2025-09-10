@@ -20,9 +20,13 @@ export default defineConfig({
   },
   // Add SPA fallback for client-side routing
   server: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    port: 3000,
+    host: true
   },
   preview: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    port: 3000,
+    host: true
   }
 })

@@ -1,51 +1,111 @@
 @import "tailwindcss";
 
-/* Custom styles for white background theme */
+/* Universal color system for all devices */
 :root {
+  /* Primary Brand Colors */
   --primary-blue: #2563eb;
+  --primary-blue-light: #3b82f6;
+  --primary-blue-dark: #1d4ed8;
   --primary-indigo: #4f46e5;
+  --primary-indigo-light: #6366f1;
+  --primary-indigo-dark: #3730a3;
   --primary-purple: #7c3aed;
+  --primary-purple-light: #8b5cf6;
+  --primary-purple-dark: #5b21b6;
   --primary-pink: #ec4899;
+  --primary-pink-light: #f472b6;
+  --primary-pink-dark: #be185d;
+  
+  /* Accent Colors */
   --accent-emerald: #059669;
+  --accent-emerald-light: #10b981;
   --accent-orange: #ea580c;
+  --accent-orange-light: #f97316;
+  
+  /* Text Colors - Consistent across all devices */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
+  --text-light: #d1d5db;
+  --text-white: #ffffff;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-dark: #111827;
+  --bg-dark-secondary: #1f2937;
+  
+  /* Border Colors */
   --border-light: #e5e7eb;
-  --bg-light-accent: #f9fafb;
-  --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --border-medium: #d1d5db;
+  --border-dark: #374151;
+  
+  /* Shadow System */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Gradient Backgrounds */
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
+  --gradient-secondary: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+  --gradient-accent: linear-gradient(135deg, var(--accent-emerald), var(--primary-blue));
+  
+  /* Light Theme Colors */
+  --bg-blue-light: #eff6ff;
+  --bg-indigo-light: #eef2ff;
+  --bg-purple-light: #faf5ff;
+  --bg-pink-light: #fdf2f8;
+  --bg-green-light: #ecfdf5;
+  --bg-orange-light: #fff7ed;
+  --bg-gray-light: #f9fafb;
 }
 
-/* Enhanced button styles */
+/* Universal Button Styles - Consistent across all devices */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--text-white);
   border: none;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-base);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #1d4ed8, #3730a3);
+  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-indigo-dark));
   transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-md);
 }
 
-/* Enhanced card styles */
+.btn-secondary {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-base);
+}
+
+/* Universal Card Styles */
 .card-enhanced {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  box-shadow: var(--shadow-light);
+  box-shadow: var(--shadow-base);
   transition: all 0.3s ease;
 }
 
 .card-enhanced:hover {
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
-/* Text styles */
+/* Universal Text Styles - Same across all devices */
 .text-primary {
   color: var(--text-primary);
 }
@@ -58,7 +118,11 @@
   color: var(--text-muted);
 }
 
-/* Accent colors */
+.text-light {
+  color: var(--text-light);
+}
+
+/* Universal Accent Colors */
 .accent-blue {
   color: var(--primary-blue);
 }
@@ -75,33 +139,57 @@
   color: var(--primary-pink);
 }
 
-/* Background gradients */
-.gradient-blue {
-  background: linear-gradient(135deg, var(--primary-blue), var(--primary-indigo));
+.accent-emerald {
+  color: var(--accent-emerald);
 }
 
-.gradient-purple {
-  background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+.accent-orange {
+  color: var(--accent-orange);
 }
 
-/* Light accent backgrounds */
+/* Universal Background Gradients */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Universal Light Accent Backgrounds */
 .bg-blue-light {
-  background-color: #eff6ff;
+  background-color: var(--bg-blue-light);
+}
+
+.bg-indigo-light {
+  background-color: var(--bg-indigo-light);
 }
 
 .bg-purple-light {
-  background-color: #faf5ff;
+  background-color: var(--bg-purple-light);
+}
+
+.bg-pink-light {
+  background-color: var(--bg-pink-light);
 }
 
 .bg-green-light {
-  background-color: #ecfdf5;
+  background-color: var(--bg-green-light);
 }
 
 .bg-orange-light {
-  background-color: #fff7ed;
+  background-color: var(--bg-orange-light);
 }
 
-/* Advanced navbar animations */
+.bg-gray-light {
+  background-color: var(--bg-gray-light);
+}
+
+/* Universal Navbar Animations - Consistent across all devices */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -119,16 +207,16 @@
   animation: gradientShift 8s ease infinite;
 }
 
-/* Glassmorphism effects */
+/* Universal Glassmorphism - Consistent across all screen sizes */
 .glassmorphism {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Professional hover effects */
+/* Universal Navigation Hover Effects */
 .nav-item-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -138,7 +226,50 @@
   color: var(--primary-blue);
 }
 
-/* Dropdown animations */
+/* Universal Navigation Active States */
+.nav-item-active {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-item-inactive {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-item-inactive:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--primary-blue);
+  box-shadow: var(--shadow-base);
+}
+
+/* Universal Mode Toggle Colors */
+.mode-toggle-study {
+  background: var(--bg-blue-light);
+  color: var(--primary-blue);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.mode-toggle-study:hover {
+  background: #dbeafe;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.mode-toggle-professional {
+  background: var(--bg-purple-light);
+  color: var(--primary-purple);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+.mode-toggle-professional:hover {
+  background: #f3e8ff;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+}
+
+/* Universal Dropdown Animations */
 .dropdown-enter {
   opacity: 0;
   transform: translateY(-10px) scale(0.95);
@@ -161,7 +292,7 @@
   transition: all 0.2s ease-in;
 }
 
-/* Mobile responsive fixes */
+/* Universal Responsive Design - Colors consistent across all breakpoints */
 @media (max-width: 640px) {
   .nav-item-hover {
     padding: 0.75rem 1rem;
@@ -171,6 +302,42 @@
   .glassmorphism {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.98);
+  }
+  
+  /* Ensure colors remain consistent on mobile */
+  .mode-toggle-study {
+    background: var(--bg-blue-light);
+    color: var(--primary-blue);
+  }
+  
+  .mode-toggle-professional {
+    background: var(--bg-purple-light);
+    color: var(--primary-purple);
+  }
+}
+
+/* Tablet responsive design (641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .glassmorphism {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+/* Desktop responsive design (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .glassmorphism {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+/* Large desktop/laptop responsive design (1280px+) */
+@media (min-width: 1280px) {
+  .glassmorphism {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 }
 
@@ -217,35 +384,72 @@
   }
 }
 
-/* Feed page mobile optimizations */
+/* Feed page universal colors - Consistent across all devices */
 @media (max-width: 640px) {
-  /* Reduce card padding on mobile */
+  /* Reduce card padding on mobile but keep colors consistent */
   .feed-card .card-content {
     padding: 1rem;
   }
   
-  /* Optimize code blocks for mobile */
+  /* Optimize code blocks for mobile with consistent colors */
   .feed-code-block {
     font-size: 0.75rem;
     line-height: 1.4;
+    background: var(--bg-dark);
+    color: var(--text-white);
+    border: 1px solid var(--border-dark);
   }
   
-  /* Better touch targets for feed actions */
+  /* Better touch targets for feed actions with consistent colors */
   .feed-action-button {
     min-height: 44px;
     min-width: 44px;
     padding: 0.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
   }
   
-  /* Optimize avatar sizes */
+  .feed-action-button:hover {
+    color: var(--primary-blue);
+  }
+  
+  .feed-action-button.liked {
+    color: #ef4444;
+  }
+  
+  .feed-action-button.bookmarked {
+    color: #f59e0b;
+  }
+  
+  /* Optimize avatar sizes with consistent styling */
   .feed-avatar-small {
     width: 2rem;
     height: 2rem;
+    border: 2px solid var(--border-light);
   }
   
   .feed-avatar-medium {
     width: 2.5rem;
     height: 2.5rem;
+    border: 2px solid var(--border-light);
+  }
+}
+
+@media (min-width: 641px) {
+  /* Desktop/tablet feed styling with same color consistency */
+  .feed-code-block {
+    background: var(--bg-dark);
+    color: var(--text-white);
+    border: 1px solid var(--border-dark);
+  }
+  
+  .feed-action-button {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+  }
+  
+  .feed-action-button:hover {
+    color: var(--primary-blue);
   }
 }
 
@@ -264,4 +468,85 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Universal Component Colors - Apply to all devices */
+.universal-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-base);
+  color: var(--text-primary);
+}
+
+.universal-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.universal-button-primary {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  border: none;
+  box-shadow: var(--shadow-base);
+}
+
+.universal-button-primary:hover {
+  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-indigo-dark));
+  box-shadow: var(--shadow-md);
+}
+
+.universal-button-secondary {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.universal-button-secondary:hover {
+  background: var(--bg-secondary);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.universal-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.universal-input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.universal-text-primary {
+  color: var(--text-primary);
+}
+
+.universal-text-secondary {
+  color: var(--text-secondary);
+}
+
+.universal-text-muted {
+  color: var(--text-muted);
+}
+
+/* Universal responsive spacing that works across all devices */
+@media (max-width: 640px) {
+  .universal-spacing-mobile {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .universal-spacing-tablet {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .universal-spacing-desktop {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
 }
