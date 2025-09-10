@@ -212,24 +212,24 @@ const cacheMiddleware = (duration) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Feed
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
             Stay updated with the latest from your coding community
           </p>
         </div>
 
         {/* Search and Filter */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="flex flex-col gap-3 sm:gap-4 mb-6 sm:mb-8">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
             <Input
               placeholder="Search posts, people, or topics..."
-              className="pl-10"
+              className="pl-10 h-10 sm:h-auto"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -239,6 +239,7 @@ const cacheMiddleware = (duration) => {
               variant={filter === 'all' ? 'default' : 'outline'}
               onClick={() => setFilter('all')}
               size="sm"
+              className="flex-1 sm:flex-none"
             >
               All
             </Button>
@@ -246,6 +247,7 @@ const cacheMiddleware = (duration) => {
               variant={filter === 'following' ? 'default' : 'outline'}
               onClick={() => setFilter('following')}
               size="sm"
+              className="flex-1 sm:flex-none"
             >
               Following
             </Button>
@@ -253,39 +255,39 @@ const cacheMiddleware = (duration) => {
         </div>
 
         {/* New Post */}
-        <Card className="mb-8">
-          <CardContent className="pt-6">
-            <div className="flex gap-4">
+        <Card className="mb-6 sm:mb-8">
+          <CardContent className="pt-4 sm:pt-6">
+            <div className="flex gap-3 sm:gap-4">
               <img
                 src={user.avatar}
                 alt={user.name}
-                className="w-10 h-10 rounded-full"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0"
               />
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <textarea
                   placeholder="What's on your mind? Share your coding journey..."
-                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
+                  className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white text-sm sm:text-base"
                   rows={3}
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                 />
-                <div className="flex justify-between items-center mt-3">
-                  <div className="flex gap-2">
-                    <Button variant="ghost" size="sm">
-                      <Code className="w-4 h-4 mr-2" />
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-3 gap-3">
+                  <div className="flex gap-1 sm:gap-2 overflow-x-auto w-full sm:w-auto">
+                    <Button variant="ghost" size="sm" className="flex-shrink-0 text-xs sm:text-sm">
+                      <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                       Code
                     </Button>
-                    <Button variant="ghost" size="sm">
-                      <Image className="w-4 h-4 mr-2" />
+                    <Button variant="ghost" size="sm" className="flex-shrink-0 text-xs sm:text-sm">
+                      <Image className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                       Image
                     </Button>
-                    <Button variant="ghost" size="sm">
-                      <FileText className="w-4 h-4 mr-2" />
+                    <Button variant="ghost" size="sm" className="flex-shrink-0 text-xs sm:text-sm">
+                      <FileText className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                       Article
                     </Button>
                   </div>
-                  <Button onClick={handleNewPost} disabled={!newPost.trim()}>
-                    <Plus className="w-4 h-4 mr-2" />
+                  <Button onClick={handleNewPost} disabled={!newPost.trim()} size="sm" className="w-full sm:w-auto">
+                    <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                     Post
                   </Button>
                 </div>
@@ -295,49 +297,50 @@ const cacheMiddleware = (duration) => {
         </Card>
 
         {/* Posts */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {filteredPosts.map((post) => (
             <Card key={post.id} className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between">
-                  <div className="flex gap-3">
+              <CardHeader className="pb-3 px-4 sm:px-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex gap-3 min-w-0 flex-1">
                     <img
                       src={post.author.avatar}
                       alt={post.author.name}
-                      className="w-12 h-12 rounded-full"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0"
                     />
-                    <div>
-                      <CardTitle className="text-lg">{post.author.name}</CardTitle>
-                      <CardDescription>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-base sm:text-lg truncate">{post.author.name}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm">
                         {post.author.role} • {post.timestamp}
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 sm:gap-2 flex-shrink-0">
                     {!post.author.isFollowing && post.author.name !== user.name && (
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => handleFollow(post.id)}
+                        className="text-xs px-2 sm:px-3"
                       >
-                        <UserPlus className="w-4 h-4 mr-2" />
-                        Follow
+                        <UserPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                        <span className="hidden sm:inline">Follow</span>
                       </Button>
                     )}
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="px-2">
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              <CardContent className="px-4 sm:px-6">
+                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed text-sm sm:text-base">
                   {post.content}
                 </p>
                 
                 {/* Tags */}
                 {post.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
@@ -360,39 +363,39 @@ const cacheMiddleware = (duration) => {
                 
                 {/* Code Snippet */}
                 {post.codeSnippet && (
-                  <div className="bg-gray-900 text-gray-100 p-4 rounded-lg mb-4 overflow-x-auto">
-                    <pre className="text-sm">
+                  <div className="bg-gray-900 text-gray-100 p-3 sm:p-4 rounded-lg mb-4 overflow-x-auto">
+                    <pre className="text-xs sm:text-sm">
                       <code>{post.codeSnippet}</code>
                     </pre>
                   </div>
                 )}
                 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <div className="flex gap-6">
+                <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex gap-4 sm:gap-6">
                     <button
                       onClick={() => handleLike(post.id)}
-                      className={`flex items-center gap-2 text-sm transition-colors ${
+                      className={`flex items-center gap-1 sm:gap-2 text-xs sm:text-sm transition-colors ${
                         post.isLiked
                           ? 'text-red-500 hover:text-red-600'
                           : 'text-gray-500 hover:text-red-500'
                       }`}
                     >
                       <Heart className={`w-4 h-4 ${post.isLiked ? 'fill-current' : ''}`} />
-                      {post.likes}
+                      <span className="hidden xs:inline">{post.likes}</span>
                     </button>
-                    <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-500 transition-colors">
+                    <button className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-500 transition-colors">
                       <MessageCircle className="w-4 h-4" />
-                      {post.comments}
+                      <span className="hidden xs:inline">{post.comments}</span>
                     </button>
-                    <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-green-500 transition-colors">
+                    <button className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500 hover:text-green-500 transition-colors">
                       <Share2 className="w-4 h-4" />
-                      {post.shares}
+                      <span className="hidden xs:inline">{post.shares}</span>
                     </button>
                   </div>
                   <button
                     onClick={() => handleBookmark(post.id)}
-                    className={`text-sm transition-colors ${
+                    className={`text-xs sm:text-sm transition-colors ${
                       post.isBookmarked
                         ? 'text-yellow-500 hover:text-yellow-600'
                         : 'text-gray-500 hover:text-yellow-500'
@@ -407,8 +410,8 @@ const cacheMiddleware = (duration) => {
         </div>
 
         {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
+          <div className="text-center py-8 sm:py-12">
+            <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg px-4">
               {searchQuery || filter === 'following' 
                 ? 'No posts found matching your criteria.'
                 : 'No posts yet. Be the first to share something!'}
