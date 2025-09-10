@@ -17,5 +17,12 @@ export default defineConfig({
         main: path.resolve(__dirname, 'index.html')
       }
     }
+  },
+  // Add SPA fallback for client-side routing
+  server: {
+    historyApiFallback: true
+  },
+  preview: {
+    historyApiFallback: true
   }
 })

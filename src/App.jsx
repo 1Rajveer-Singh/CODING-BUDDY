@@ -46,92 +46,94 @@ function AppContent() {
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
-          
-          {/* Protected Routes */}
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/library" element={
-            <ProtectedRoute>
-              <StudyPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/ai-tools" element={
-            <ProtectedRoute>
-              <AIToolsPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/ideas" element={
-            <ProtectedRoute>
-              <IdeasPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/compiler" element={
-            <ProtectedRoute>
-              <CompilerPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/gamified" element={
-            <ProtectedRoute>
-              <GamifiedPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/feed" element={
-            <ProtectedRoute>
-              <FeedPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/internships" element={
-            <ProtectedRoute>
-              <InternshipPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/hackathons" element={
-            <ProtectedRoute>
-              <HackathonPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/profile" element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          } />
-          
-          <Route path="/research" element={
-            <ProtectedRoute>
-              <ResearchPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/career" element={
-            <ProtectedRoute>
-              <CareerPage />
-            </ProtectedRoute>
-          } />
-          
-          {/* Resume Builder route */}
-          <Route path="/resume-builder" element={
-            <ProtectedRoute>
-              <ATSResumeBuilder />
-            </ProtectedRoute>
-          } />
+        <main className="pt-16">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/roadmap" element={<RoadmapPage />} />
+            <Route path="/quiz" element={<QuizPage />} />
+            
+            {/* Protected Routes */}
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/library" element={
+              <ProtectedRoute>
+                <StudyPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/ai-tools" element={
+              <ProtectedRoute>
+                <AIToolsPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/ideas" element={
+              <ProtectedRoute>
+                <IdeasPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/compiler" element={
+              <ProtectedRoute>
+                <CompilerPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/gamified" element={
+              <ProtectedRoute>
+                <GamifiedPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/feed" element={
+              <ProtectedRoute>
+                <FeedPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/internships" element={
+              <ProtectedRoute>
+                <InternshipPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/hackathons" element={
+              <ProtectedRoute>
+                <HackathonPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/research" element={
+              <ProtectedRoute>
+                <ResearchPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/career" element={
+              <ProtectedRoute>
+                <CareerPage />
+              </ProtectedRoute>
+            } />
+            
+            {/* Resume Builder route */}
+            <Route path="/resume-builder" element={
+              <ProtectedRoute>
+                <ATSResumeBuilder />
+              </ProtectedRoute>
+            } />
 
-          {/* Help & Support route */}
-          <Route path="/help-support" element={
-            <ProtectedRoute>
-              <HelpSupportPage />
-            </ProtectedRoute>
-          } />
+            {/* Help & Support route */}
+            <Route path="/help-support" element={
+              <ProtectedRoute>
+                <HelpSupportPage />
+              </ProtectedRoute>
+            } />
 
-          {/* Fallback route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+            {/* Fallback route - Redirect to home instead of causing 404 */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   );

@@ -160,3 +160,33 @@
   transform: translateY(-10px) scale(0.95);
   transition: all 0.2s ease-in;
 }
+
+/* Mobile responsive fixes */
+@media (max-width: 640px) {
+  .nav-item-hover {
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+  }
+  
+  .glassmorphism {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Ensure proper text wrapping and overflow handling */
+.text-responsive {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile menu scroll fix */
+.mobile-menu-container {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-menu-container::-webkit-scrollbar {
+  display: none;
+}

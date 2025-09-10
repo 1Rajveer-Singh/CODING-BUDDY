@@ -173,7 +173,7 @@ function Navigation() {
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                 <Code className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent max-w-[200px] sm:max-w-none truncate">
                 {isStudyMode ? 'Engineering Hub - Study' : 'Engineering Hub - Professional'}
               </span>
             </Link>
@@ -204,7 +204,7 @@ function Navigation() {
           </div>
 
           {/* Right Section - Mode Toggle, Notifications & Profile */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             
             {/* Mode Toggle Button - Circular Icon Only */}
             <div className="flex items-center">
@@ -212,7 +212,7 @@ function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={handleModeToggle}
-                className={`rounded-full w-12 h-12 transition-all duration-500 transform hover:scale-110 !hover:bg-transparent cursor-pointer ${
+                className={`rounded-full w-10 h-10 sm:w-12 sm:h-12 transition-all duration-500 transform hover:scale-110 !hover:bg-transparent cursor-pointer ${
                   isStudyMode 
                     ? 'bg-blue-100 hover:!bg-blue-200 text-blue-600 shadow-blue-200/50' 
                     : 'bg-purple-100 hover:!bg-purple-200 text-purple-600 shadow-purple-200/50'
@@ -221,16 +221,16 @@ function Navigation() {
               >
                 <div className={`transition-all duration-300 ${isStudyMode ? 'animate-pulse' : ''}`}>
                   {isStudyMode ? (
-                    <span className="text-2xl">📚</span>
+                    <span className="text-xl sm:text-2xl">📚</span>
                   ) : (
-                    <span className="text-2xl">💼</span>
+                    <span className="text-xl sm:text-2xl">💼</span>
                   )}
                 </div>
               </Button>
             </div>
 
-            {/* Notifications */}
-            <div className="relative">
+            {/* Notifications - Hidden on very small screens */}
+            <div className="relative hidden xs:block">
               <Button
                 variant="ghost"
                 size="icon"
@@ -254,18 +254,18 @@ function Navigation() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/20 hover:!bg-white/40 transition-all duration-300 !hover:text-gray-700 cursor-pointer"
+                  className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 rounded-lg bg-white/20 hover:!bg-white/40 transition-all duration-300 !hover:text-gray-700 cursor-pointer"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
-                  <span className="hidden md:block text-sm font-medium text-gray-700">
+                  <span className="hidden sm:block text-sm font-medium text-gray-700">
                     {user.name || 'User'}
                   </span>
                   {isProfileDropdownOpen ? (
-                    <ChevronUp className="w-4 h-4 text-gray-500" />
+                    <ChevronUp className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-gray-500" />
+                    <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
                   )}
                 </Button>
 
@@ -337,9 +337,9 @@ function Navigation() {
         {isMobileMenuOpen && (
           <div 
             ref={mobileMenuRef}
-            className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-white/20 shadow-xl z-40"
+            className="lg:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-md border-t border-white/20 shadow-xl z-40 max-h-[calc(100vh-4rem)] overflow-y-auto"
           >
-            {/* Mobile Navigation Items Only */}
+            {/* Mobile Navigation Items */}
             <div className="px-4 py-4 space-y-2">
               {navigationItems.map((item) => {
                 const IconComponent = item.icon;
@@ -356,12 +356,37 @@ function Navigation() {
                         : 'text-gray-700 hover:bg-blue-50/70 hover:text-blue-600'
                     }`}
                   >
-                    <IconComponent className="w-5 h-5" />
+                    <IconComponent className="w-5 h-5 flex-shrink-0" />
                     <span className="block">{item.name}</span>
                   </Link>
                 );
               })}
             </div>
+
+            {/* Mobile Profile Section - Only show when logged in */}
+            {user && (
+              <div className="px-4 py-2 border-t border-gray-200/50">
+                <div className="text-xs text-gray-500 mb-2">Account</div>
+                {profileMenuItems.map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        item.action();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center space-x-3 px-4 py-3 text-left text-sm hover:!bg-blue-50 rounded-lg transition-colors duration-200 cursor-pointer ${
+                        item.name === 'Sign Out' ? 'text-red-600' : 'text-gray-700'
+                      }`}
+                    >
+                      <IconComponent className="w-4 h-4 flex-shrink-0" />
+                      <span>{item.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>
